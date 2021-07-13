@@ -7,5 +7,13 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <pre><%= JSON.stringify(body, null, 2) %></pre>
+
+    <form method="POST">
+      Nome: <input type="text" name="nome"><br>
+      Idade: <input type="number" name="idade"><br>
+      <input type="submit">
+    </form>
   </body>
 </html>
