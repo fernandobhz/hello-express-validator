@@ -6,12 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express', body: "" });
 });
 
-let validations = [
-  check('nome').notEmpty().withMessage('Nome é requerido'),
-  check('idade').isInt().withMessage('Idade é requerido e deve ser um inteiro'),
-];
+const nomeValidator = check('nome').notEmpty().withMessage('Nome é requerido');
+const idadeValidator = check('idade').isInt().withMessage('Idade é requerido e deve ser um inteiro')
 
-router.post('/', validations, function(req, res, next) {
+router.post('/', [nomeValidator, idadeValidator]);
+
+router.post('/', function(req, res, next) {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
